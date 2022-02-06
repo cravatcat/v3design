@@ -1,0 +1,12 @@
+.widget-render-drapper {
+  width: 375px;
+  height: 667px;
+  background: rgb(255,255,255);
+  // transform: scale(50%);
+  // transform-origin: top center;
+  overflow-y: overlay;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

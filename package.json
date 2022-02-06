@@ -7,15 +7,23 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "ant-design-vue": "^2.2.8",
     "core-js": "^3.6.5",
+    "sortablejs": "^1.14.0",
+    "vant": "^3.4.3",
     "vue": "^3.0.0",
-    "vue-class-component": "^8.0.0-0"
+    "vue-class-component": "^8.0.0-0",
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
+    "@vue/babel-plugin-jsx": "^1.1.1",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-typescript": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
+    "babel-plugin-import": "^1.13.3",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
     "style-resources-loader": "^1.4.1",
     "typescript": "~4.1.5",
     "vue-cli-plugin-style-resources-loader": "~0.1.5"

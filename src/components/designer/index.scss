@@ -1,0 +1,29 @@
+.designer {
+  display: flex;
+  height: calc(100vh - 60px);
+  .m {
+    min-width: 375px;
+    overflow: hidden;
+    background: #e3e3e3;
+    padding: 10px;
+    .tools-bar {
+      height: 50px;
+      background: $white-color;
+      padding: 10px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+  }
+  .l {
+    width: 270px;
+    padding: 10px;
+    border-right: 1px solid $border-color;
+  }
+   .r {
+    flex: 1;
+    width: 320px;
+    padding: 10px;
+    border-left: 1px solid $border-color;
+  }
+}
