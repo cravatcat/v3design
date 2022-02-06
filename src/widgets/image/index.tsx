@@ -1,19 +1,17 @@
-import { defineComponent } from 'vue';
-import { Image } from 'vant';
+import { defineComponent } from "vue";
+import { Image } from "vant";
 
 export default defineComponent({
-  name: 'wImage',
+  name: "wImage",
   props: {
     src: {
       type: String,
-      default: ''
-    }
+      default: "",
+    },
   },
   setup(props, { emit }) {
     return () => {
-      return (
-        <Image src={props.src} />
-      );
-    }
-  }
+      return <Image src={props.src} width="100%" />;
+    };
+  },
 });

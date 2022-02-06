@@ -4,6 +4,7 @@
   "author": "4740721@qq.com",
   "private": true,
   "scripts": {
+    "serve": "NODE_ENV=development vue-cli-service serve",
     "dev": "NODE_ENV=development vue-cli-service serve",
     "build": "NODE_ENV=xxx vue-cli-service build"
   },
@@ -28,6 +29,7 @@
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
     "babel-plugin-import": "^1.13.3",
+    "postcss-px-to-viewport": "^1.1.1",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "style-resources-loader": "^1.4.1",
