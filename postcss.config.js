@@ -12,7 +12,7 @@ if (process.env.NODE_ENV !== "development") {
       minPixelValue: 1,
       mediaQuery: true,
       replace: true,
-      exclude: [/\/components\//, /\/ant-design-vue\//],
+      exclude: [],
       landscape: false,
       landscapeUnit: "vw",
       landscapeWidth: 568,
