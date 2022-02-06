@@ -1,14 +1,20 @@
 {
   "name": "v3design",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "author": "4740721@qq.com",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "dev": "NODE_ENV=development vue-cli-service serve",
+    "build": "NODE_ENV=xxx vue-cli-service build"
   },
   "dependencies": {
     "ant-design-vue": "^2.2.8",
+    "axios": "^0.25.0",
     "core-js": "^3.6.5",
+    "ejs": "^3.1.6",
+    "execa": "^5.1.1",
+    "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0",
     "sortablejs": "^1.14.0",
     "vant": "^3.4.3",
     "vue": "^3.0.0",

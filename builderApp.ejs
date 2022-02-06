@@ -1,0 +1,19 @@
+import { defineComponent, h, resolveComponent } from "vue";
+import { <%-widgetNames.join(', ')%> } from './widgets';
+
+const widgets = <%-JSON.stringify(widgets)%>;
+
+export default defineComponent({
+  components: {
+    <%=widgetNames.join(',')%> 
+  },
+  render() {
+    return (
+      <div class="w_widget-list-wrapper">
+        {
+          widgets.map((widget: any) => h(resolveComponent(widget.name), { ...widget.props }))
+        }
+      </div>
+    )
+  }
+});

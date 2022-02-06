@@ -2,6 +2,7 @@ import { defineComponent, provide, reactive, ref } from 'vue';
 import './index.scss';
 import Draggable from 'vuedraggable';
 import menus from '../../menus/index';
+import { useRequest } from '../../uses';
 
 export default defineComponent({
   name: 'designer',
@@ -18,17 +19,21 @@ export default defineComponent({
       return (activeTarget.value as any).getWidgetPropsRender();
     };
     const clone = (data: any) => data.createWidgetConfiger();
-    const handleBulidClick = () => {
+    const handleBulidClick = async () => {
       const lastConfig = widgets.map((widget) => {
         const w = (widget as any).getWidgetInstance();
-        let { type, props } = w;
+        const { type, props } = w;
         return {
           name: type.name,
           props,
           children: [],
         }
-      })
-      console.log(lastConfig);
+      });
+      const { post } = useRequest();
+      const data = await post('/builder', {
+        widgets: lastConfig,
+      });
+      console.log(data);
     };
     const draggableProps = {
       animation: 100,
@@ -75,3 +80,4 @@ export default defineComponent({
     }
   }
 });
+
