@@ -1,0 +1,9 @@
+.layout-wrapper {
+  width: 100%;
+  min-height: 30px;
+  background-color: #ccc;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

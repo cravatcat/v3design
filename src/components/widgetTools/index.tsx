@@ -19,7 +19,6 @@ export default defineComponent({
     const context: any = inject("designerCtx");
     let prevActivedWidget = context.activedWidget;
     const handleClick = () => {
-      console.log();
       if (prevActivedWidget.value === props.widget) return;
       if (prevActivedWidget.value) {
         prevActivedWidget.value._isActived = false;

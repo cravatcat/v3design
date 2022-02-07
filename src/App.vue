@@ -8,8 +8,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss">
 .app {
@@ -21,7 +20,7 @@
     align-items: center;
     cursor: default;
     background-color: $white-color;
-    border-bottom: 1px solid #dcdee2;;
+    border-bottom: 1px solid #dcdee2;
     .name {
       display: inline-block;
       color: rgba(0, 0, 0, 0.8);
@@ -41,10 +40,9 @@
     height: 30px;
     padding: 0 20px;
     font-size: 16px;
-    border-top: 1px solid #ECECEC;
+    border-top: 1px solid #ececec;
     background-color: #fff;
     cursor: pointer;
   }
 }
 </style>
-

@@ -1,10 +1,9 @@
 import { App } from "vue";
 import Designer from "./designer";
-import WidgetRender from "./widgetList";
 
-const componets = [Designer, WidgetRender];
+const componets = [Designer];
 
-export { Designer, WidgetRender };
+export { Designer };
 
 export default function (app: App) {
   componets.forEach((comp) => app.component(comp.name, comp));
