@@ -19,11 +19,31 @@
     width: 270px;
     padding: 10px;
     border-right: 1px solid $border-color;
+    .tools-bar {
+      height: 50px;
+      background: $white-color;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      font-size: $font-size-base;
+      border-bottom: 1px solid $border-color;
+      margin-bottom: 10px;
+    }
   }
-   .r {
+  .r {
     flex: 1;
     width: 320px;
     padding: 10px;
     border-left: 1px solid $border-color;
+    .tools-bar {
+      height: 50px;
+      background: $white-color;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      font-size: $font-size-base;
+      border-bottom: 1px solid $border-color;
+      margin-bottom: 10px;
+    }
   }
 }

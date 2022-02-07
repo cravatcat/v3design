@@ -1,0 +1,7 @@
+.widget-tools-wrapper {
+  font-size: 0;
+}
+
+.widget-tools-wrapper.actived {
+  border: 2px solid $primary-color;
+}

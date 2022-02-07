@@ -1,26 +1,27 @@
 import { defineComponent, provide, reactive, ref } from "vue";
-import "./index.scss";
-import Draggable from "vuedraggable";
-import menus from "../../menus/index";
+import menusData from "../../menus/index";
+import MenuList from "../menuList";
+import WidgetList from "../widgetList";
 import { useRequest } from "../../uses";
 import { message } from "ant-design-vue";
+import "./index.scss";
 
 export default defineComponent({
   name: "designer",
   setup(props, { slots }) {
-    const activeTarget = ref(null);
     const loading = ref(false);
     const widgets = reactive([]);
-    const setActiveTarget = (target: any) => (activeTarget.value = target);
+    const activedWidget = ref(null);
+    const widgetsMap = reactive({});
     provide("designerCtx", {
       widgets,
-      setActiveTarget,
+      widgetsMap,
+      activedWidget,
     });
     const renderConfigArea = () => {
-      if (!activeTarget.value) return null;
-      return (activeTarget.value as any).getWidgetPropsRender();
+      if (!activedWidget.value) return null;
+      return (activedWidget.value as any).getWidgetPropsRender();
     };
-    const clone = (data: any) => data.createWidgetConfiger();
     const handleBulidClick = async () => {
       loading.value = true;
       const lastConfig = widgets.map((widget) => {
@@ -42,29 +43,11 @@ export default defineComponent({
         message.info("work done!");
       }
     };
-    const draggableProps = {
-      animation: 100,
-      group: { name: "default", pull: "clone", put: false },
-      sort: false,
-      list: menus,
-      itemKey: "key",
-      clone,
-    };
     return () => {
       return (
         <div class="designer">
           <div class="l">
-            <Draggable {...draggableProps}>
-              {{
-                item: ({ element }: any) => {
-                  return (
-                    <div style={{ marginBottom: "5px" }}>
-                      {element.getMenuRender()}
-                    </div>
-                  );
-                },
-              }}
-            </Draggable>
+            <MenuList menus={menusData} />
           </div>
           <div class="m">
             <a-space direction="vertical">
@@ -78,10 +61,13 @@ export default defineComponent({
                   生成页面
                 </a-button>
               </div>
-              <widgetRender />
+              <WidgetList />
             </a-space>
           </div>
-          <div class="r">{renderConfigArea()}</div>
+          <div class="r">
+            <div class="tools-bar">配置区</div>
+            {renderConfigArea()}
+          </div>
         </div>
       );
     };

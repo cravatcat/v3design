@@ -1,20 +1,11 @@
 import { App } from "vue";
-import Designer from './designer';
-import WidgetRender from './widgetRender';
-import ActivedWrapper from './dragTools';
+import Designer from "./designer";
+import WidgetRender from "./widgetList";
 
-const componets = [
-  Designer,
-  WidgetRender,
-  ActivedWrapper
-];
+const componets = [Designer, WidgetRender];
 
-export {
-  Designer,
-  WidgetRender,
-  ActivedWrapper
-}
+export { Designer, WidgetRender };
 
 export default function (app: App) {
-  componets.forEach(comp => app.component(comp.name, comp));
+  componets.forEach((comp) => app.component(comp.name, comp));
 }
