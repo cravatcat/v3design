@@ -7,6 +7,7 @@ export default defineComponent({
   name: "wLayout",
   setup(props, { slots }) {
     const context = inject("designerCtx");
+    let layOutId = -1;
     let draggableProps = {
       class: "layout-wrapper",
       list: [],
@@ -17,6 +18,7 @@ export default defineComponent({
     };
     if (context) {
       let activedWidget = (context as any).activedWidget;
+      layOutId = activedWidget.value._id;
       if (!activedWidget.value.children) {
         activedWidget.value.children = reactive([]);
       }
@@ -35,9 +37,9 @@ export default defineComponent({
         return (
           <Draggable {...draggableProps}>
             {{
-              item: ({ element }: any) => {
+              item: ({ element, index }: any) => {
                 return (
-                  <WidgetTools widget={element}>
+                  <WidgetTools widget={element} id={layOutId} index={index}>
                     {element.getWidgetInstance()}
                   </WidgetTools>
                 );

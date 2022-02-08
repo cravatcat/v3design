@@ -1,8 +1,7 @@
 import { computed, defineComponent, inject, createVNode } from "vue";
 import { DragOutlined, DeleteOutlined } from "@ant-design/icons-vue";
 import "./index.scss";
-// import { Modal } from "ant-design-vue";
-// import { ExclamationCircleOutlined } from '@ant-design/icons-vue';
+
 export default defineComponent({
   name: "widgetTools",
   props: {
@@ -14,35 +13,26 @@ export default defineComponent({
       type: Number,
       default: -1,
     },
+    id: {
+      type: Number,
+      default: -1,
+    },
   },
   setup(props, { slots, emit }) {
     const wrapperCls = computed(() => {
       return {
         "widget-tools-wrapper": true,
         actived: !!props.widget._isActived,
-        'is-layout': props.widget.isLayout,
+        "is-layout": props.widget.isLayout,
       };
     });
     const context: any = inject("designerCtx");
     let prevActivedWidget = context.activedWidget;
     let widgets = context.widgets;
+    const widgetsMap = context.widgetsMap;
     const handleClick = () => {
       if (prevActivedWidget.value === props.widget) return;
-      if(props.widget.isLayout) {
-        // Modal.confirm({
-        //   title: '是否编辑子组件？',
-        //   icon: createVNode(ExclamationCircleOutlined),
-        //   okText: '是',
-        //   cancelText: '否',
-        //   onOk() {},
-        //   onCancel() {
-        //     if (prevActivedWidget.value) {
-        //       prevActivedWidget.value._isActived = false;
-        //     }
-        //     props.widget._isActived = true;
-        //     context.activedWidget.value = props.widget;
-        //   },
-        // });
+      if (props.widget.isLayout) {
       } else {
         if (prevActivedWidget.value) {
           prevActivedWidget.value._isActived = false;
@@ -53,7 +43,11 @@ export default defineComponent({
     };
 
     const handleDeleteClick = () => {
-      widgets.splice(props.index, 1);
+      if (props.id !== -1 && widgetsMap[props.id]) {
+        widgetsMap[props.id].children.splice(props.index, 1);
+      } else {
+        widgets.splice(props.index, 1);
+      }
     };
 
     const handleLayoutBarClick = () => {
@@ -63,7 +57,7 @@ export default defineComponent({
       }
       props.widget._isActived = true;
       context.activedWidget.value = props.widget;
-    }
+    };
 
     const renderDragHandler = () => {
       return props.widget._isActived && !props.widget.isLayout ? (
@@ -82,13 +76,11 @@ export default defineComponent({
       ) : null;
     };
     const renderLayoutHandler = () => {
-      return props.widget.isLayout ? 
-       (
-         <div class="layout-tools-area">
-           <div class="drag-handler" onClick={handleLayoutBarClick}></div>
-         </div>
-       )
-       : null
+      return props.widget.isLayout ? (
+        <div class="layout-tools-area">
+          <div class="drag-handler" onClick={handleLayoutBarClick}></div>
+        </div>
+      ) : null;
     };
     return () => {
       return (
