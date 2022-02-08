@@ -10,11 +10,21 @@ const buildApp = async (widgets) => {
   const template = fs.readFileSync("./builderApp.ejs", {
     encoding: "utf-8",
   });
-  const widgetNames = widgets.reduce((names, widget) => {
-    if (names.includes(widget.name)) return names;
-    names.push(widget.name);
-    return names;
-  }, []);
+  const getWidgetNames = (widgets, defaultNames = []) => {
+    return widgets.reduce((names, widget) => {
+      if (names.includes(widget.name) && widget.name !== "wLayout")
+        return names;
+      if (widget.name === "wLayout") {
+        if (!names.includes(widget.name)) names.push(widget.name);
+        const { children } = widget;
+        names = getWidgetNames(children, names);
+      } else {
+        names.push(widget.name);
+      }
+      return names;
+    }, defaultNames);
+  };
+  const widgetNames = getWidgetNames(widgets, []);
   const code = ejs.render(template, { widgetNames, widgets });
   fs.writeFileSync("./src/builderApp.tsx", code);
   const commands = ["run", "build"];

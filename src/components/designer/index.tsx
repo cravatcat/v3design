@@ -22,17 +22,22 @@ export default defineComponent({
       if (!activedWidget.value) return null;
       return (activedWidget.value as any).getWidgetPropsRender();
     };
-    const handleBulidClick = async () => {
-      loading.value = true;
-      const lastConfig = widgets.map((widget) => {
-        const w = (widget as any).getWidgetInstance();
+    const genConfig = (widgets: any) => {
+      return widgets.map((widget: any) => {
+        const w = widget?.getWidgetInstance();
+        let children = widget?.children || [];
+        children = genConfig(children);
         const { type, props } = w;
         return {
           name: type.name,
           props,
-          children: [],
-        };
+          children,
+        }
       });
+    };
+    const handleBulidClick = async () => {
+      loading.value = true;
+      const lastConfig = genConfig(widgets);
       const { post } = useRequest();
       try {
         await post("/builder", {
