@@ -1,5 +1,8 @@
 # v3design
 
+## 简介
+页面生成器，拖拽生成静态页面（所见即所得）。
+
 ## Project setup
 ```
 npm install
@@ -22,7 +25,7 @@ node builder.js
 ```
 npm run build
 注: build出来的不是项目本身，而是拖拽后的页面。
-本项目前demo阶段， 只提供思路，暂没有拆分前后端以及npm包。
+本项目前demo阶段，只提供思路，暂没有拆分前后端以及npm包。
 ```
 
 ### Customize configuration
