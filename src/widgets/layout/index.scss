@@ -1,7 +1,7 @@
 .layout-wrapper {
   width: 100%;
   min-height: 30px;
-  background-color: #ccc;
+  background-color: $bg-prev-color;
   overflow-x: hidden;
   &::-webkit-scrollbar {
     display: none;
