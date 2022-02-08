@@ -46,7 +46,9 @@ export default defineComponent({
           </Draggable>
         );
       } else {
-        return <div>{slots.default!()}</div>;
+        return (
+          <div class="layout">{slots.default ? slots.default() : null}</div>
+        );
       }
     };
     return () => {

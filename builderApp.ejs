@@ -8,12 +8,15 @@ export default defineComponent({
     <%=widgetNames.join(',')%> 
   },
   render() {
-    return (
-      <div class="w_widget-list-wrapper">
-        {
-          widgets.map((widget: any) => h(resolveComponent(widget.name), { ...widget.props }))
-        }
-      </div>
-    )
-  }
+    const widgetsRender = (widgets: any) => {
+      return widgets.map((widget: any) =>
+        h(
+          resolveComponent(widget.name),
+          { ...widget.props },
+          widgetsRender(widget.children || null)
+        )
+      );
+    };
+    return (<div class="w_widget-list-wrapper">{widgetsRender(widgets)}</div>);
+  },
 });
