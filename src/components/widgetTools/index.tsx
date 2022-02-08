@@ -41,7 +41,6 @@ export default defineComponent({
         context.activedWidget.value = props.widget;
       }
     };
-
     const handleDeleteClick = () => {
       if (props.id !== -1 && widgetsMap[props.id]) {
         widgetsMap[props.id].children.splice(props.index, 1);
@@ -49,7 +48,6 @@ export default defineComponent({
         widgets.splice(props.index, 1);
       }
     };
-
     const handleLayoutBarClick = () => {
       if (prevActivedWidget.value === props.widget) return;
       if (prevActivedWidget.value) {
@@ -58,7 +56,6 @@ export default defineComponent({
       props.widget._isActived = true;
       context.activedWidget.value = props.widget;
     };
-
     const renderDragHandler = () => {
       return props.widget._isActived && !props.widget.isLayout ? (
         <div class="drag-handler">
@@ -69,6 +66,7 @@ export default defineComponent({
     const renderTools = () => {
       return props.widget._isActived ? (
         <div class="tools-area">
+          <div class="widget-name">{props.widget.widgetName}</div>
           <div class="delete-container" onClick={handleDeleteClick}>
             <DeleteOutlined style="font-size: 18px; color: #fff" />
           </div>

@@ -17,6 +17,13 @@
     bottom: 0;
     right: 0;
     z-index: 10;
+    .widget-name {
+      display: inline-block;
+      vertical-align: top;
+      color: $white-color;
+      font-size: 10px;
+      margin-right: 5px;
+    }
     .delete-container {
       display: inline-block;
       width: 18px;

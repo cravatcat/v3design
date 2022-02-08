@@ -30,6 +30,7 @@ const createWidgetConfiger = () => {
     );
   };
   return {
+    widgetName,
     getWidgetInstance,
     getWidgetPropsRender,
   };
