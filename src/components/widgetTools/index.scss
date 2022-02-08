@@ -1,5 +1,29 @@
 .widget-tools-wrapper {
   font-size: 0;
+  position: relative;
+  .drag-handler {
+    display: inline-block;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 0;
+    left: 0;
+    background-color: $primary-color;
+    z-index: 10;
+    cursor: move;
+  }
+  .tools-area {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    .delete-container {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      background-color: $error-color;
+    }
+  }
 }
 
 .widget-tools-wrapper.actived {

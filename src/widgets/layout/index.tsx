@@ -17,7 +17,7 @@ export default defineComponent({
       group: { name: "default" },
       animation: 100,
       itemKey: "_id",
-      handle: ".widget-tools-wrapper",
+      handle: ".drag-handler",
     };
     return () => {
       return (
