@@ -24,8 +24,27 @@
       background-color: $error-color;
     }
   }
+  .layout-tools-area {
+    position: relative;
+    width: 100%;
+    display: flex;
+    .drag-handler {
+      position: relative;
+      height: 10px;
+      width: 100%;
+      background-color: $error-color;
+      cursor: move;
+    }
+    .layout-tools-delete {
+      background-color: $error-color;
+    }
+  }
 }
 
 .widget-tools-wrapper.actived {
-  border: 2px solid $primary-color;
+  border: 2px solid $primary-color !important;
+}
+
+.widget-tools-wrapper.is-layout {
+  border: 1px dashed $error-color;
 }

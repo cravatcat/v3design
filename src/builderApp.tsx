@@ -1,39 +1,19 @@
 import { defineComponent, h, resolveComponent } from "vue";
-import { wButton, wImage } from "./widgets";
+import { wLayout } from './widgets';
 
-const widgets = [
-  { name: "wButton", props: { text: "按钮" }, children: [] },
-  {
-    name: "wImage",
-    props: { src: "https://img.yzcdn.cn/vant/cat.jpeg" },
-    children: [],
-  },
-  { name: "wButton", props: { text: "按钮" }, children: [] },
-  {
-    name: "wImage",
-    props: { src: "https://img.yzcdn.cn/vant/cat.jpeg" },
-    children: [],
-  },
-  {
-    name: "wImage",
-    props: { src: "https://img.yzcdn.cn/vant/cat.jpeg" },
-    children: [],
-  },
-  { name: "wButton", props: { text: "按钮" }, children: [] },
-];
+const widgets = [{"name":"wLayout","props":null,"children":[]}];
 
 export default defineComponent({
   components: {
-    wButton,
-    wImage,
+    wLayout 
   },
   render() {
     return (
       <div class="w_widget-list-wrapper">
-        {widgets.map((widget: any) =>
-          h(resolveComponent(widget.name), { ...widget.props })
-        )}
+        {
+          widgets.map((widget: any) => h(resolveComponent(widget.name), { ...widget.props }))
+        }
       </div>
-    );
-  },
+    )
+  }
 });
