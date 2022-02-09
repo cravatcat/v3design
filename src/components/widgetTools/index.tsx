@@ -1,4 +1,4 @@
-import { computed, defineComponent, inject, createVNode } from "vue";
+import { computed, defineComponent, inject } from "vue";
 import { DragOutlined, DeleteOutlined } from "@ant-design/icons-vue";
 import "./index.scss";
 
