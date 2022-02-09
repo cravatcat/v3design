@@ -34,6 +34,8 @@ npm run build
 3. 组件交互or通信事件机制？。
 4. 页面通用属性注入 如title。
 5. tsx-style-px2vw.js 的loader。这个是因为目前 postcss-px-to-viewport只处理了.scss 并不会处理style标签。
+6. 合理拆分项目，拆分npm包等。
+......
 
 以上todo 有兴趣的老板可以提idea or code。
 
