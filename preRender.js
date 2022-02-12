@@ -5,9 +5,6 @@ const fs = require("fs");
 const distDir = path.resolve(__dirname, "./dist");
 const htmlName = "index.html";
 
-let pageLoadedResolve = null;
-const pageLoaded = new Promise((resolve) => (pageLoadedResolve = resolve));
-
 async function readFiles(rootDir = distDir) {
   try {
     let dirOrfiles = await fs.promises.opendir(rootDir);
@@ -71,7 +68,7 @@ async function preRender() {
         let content = fs.readFileSync(filePath, { encoding: "utf8" });
         content = content.replace('<div id="app"></div>', str);
         fs.writeFileSync(path.resolve(distDir, htmlName), content);
-        pageLoadedResolve(1);
+        await browser.close();
       } catch (err) {
         console.log(err);
       }
@@ -80,8 +77,6 @@ async function preRender() {
     page.on("load", onLoad);
     await page.setRequestInterception(true);
     await page.goto(`file:${distDir}/${htmlName}`);
-    await pageLoaded;
-    await browser.close();
   } catch (err) {
     console.log(err);
   }
