@@ -13,6 +13,7 @@ export default defineComponent({
     const widgets = reactive([]);
     const activedWidget = ref(null);
     const widgetsMap = reactive({});
+    const preRender = ref(false);
     provide("designerCtx", {
       widgets,
       widgetsMap,
@@ -32,7 +33,7 @@ export default defineComponent({
           name: type.name,
           props,
           children,
-        }
+        };
       });
     };
     const handleBulidClick = async () => {
@@ -42,6 +43,7 @@ export default defineComponent({
       try {
         await post("/builder", {
           widgets: lastConfig,
+          usePreRender: preRender.value,
         });
       } finally {
         loading.value = false;
@@ -57,6 +59,9 @@ export default defineComponent({
           <div class="m">
             <a-space direction="vertical">
               <div class="tools-bar">
+                <a-checkbox v-model={[preRender.value, "checked"]}>
+                  启用预渲染
+                </a-checkbox>
                 <a-button
                   type="primary"
                   onClick={handleBulidClick}

@@ -1,11 +1,11 @@
 import { defineComponent, h, resolveComponent } from "vue";
-import { wSwipe } from './widgets';
+import { wImage } from './widgets';
 
-const widgets = [{"name":"wSwipe","props":{"images":["https://img.yzcdn.cn/vant/apple-1.jpg","https://img.yzcdn.cn/vant/apple-2.jpg","https://img.yzcdn.cn/vant/apple-3.jpg"]},"children":[]}];
+const widgets = [{"name":"wImage","props":{"src":"https://img.yzcdn.cn/vant/cat.jpeg"},"children":[]}];
 
 export default defineComponent({
   components: {
-    wSwipe 
+    wImage 
   },
   render() {
     const widgetsRender = (widgets: any) => {

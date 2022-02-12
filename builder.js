@@ -3,6 +3,7 @@ const bodyParser = require("koa-bodyparser");
 const ejs = require("ejs");
 const fs = require("fs");
 const execa = require("execa");
+const { preRender } = require("./preRender");
 
 const app = new Koa();
 
@@ -37,9 +38,14 @@ const buildApp = async (widgets) => {
 app.use(bodyParser());
 
 app.use(async (ctx) => {
-  const { widgets } = ctx.request.body;
+  const { widgets, usePreRender } = ctx.request.body;
   try {
     await buildApp(widgets);
+    if (usePreRender) {
+      console.log("----preRenderBegin----");
+      await preRender();
+      console.log("----preRenderDone----");
+    }
     ctx.body = "ok hahaha";
   } catch (error) {
     console.log(error);
